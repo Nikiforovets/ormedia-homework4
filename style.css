@@ -1,0 +1,47 @@
+body{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.cond{
+    border: solid 5px #00b2b5;
+    margin: 20px 10px;
+    padding: 10px;
+    display: flex;
+}
+
+.cam-container{
+    border: solid 5px #00b2b5;
+    margin: 20px 10px;
+    padding: 10px;
+    display: flex;
+}
+
+.alarm-container{
+    border: solid 5px #00b2b5;
+    margin: 20px 10px;
+    padding: 10px;
+    display: flex;
+}
+
+button{
+    background-color: #00b2b5;
+    padding: 10px;
+    margin: 10px;
+    border: none;
+    color: white;
+}
+
+.buttons{
+    display: inline;
+    margin: 20px;
+    max-width: 400px;
+}
+
+.fields{
+    margin: 20px;
+}
+
+#root{
+    display: flex;
+    flex-wrap: wrap;
+}

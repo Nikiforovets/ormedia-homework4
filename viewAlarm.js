@@ -74,14 +74,31 @@ ViewAlarm.prototype.render = function(){
         this.sirenStateChange();
     });
 
-    alarmContainer.appendChild(name);
-    alarmContainer.appendChild(this._state);
-    alarmContainer.appendChild(this._sirenState);
-    alarmContainer.appendChild(textField);
-    alarmContainer.appendChild(onBtn);
-    alarmContainer.appendChild(offBtn);
-    alarmContainer.appendChild(enterBtn);
-    alarmContainer.appendChild(offSiren);
+    var imgAlarm = document.createElement("img");
+    imgAlarm.className = "alarm-img hide";
+    imgAlarm.src = "alarm.jpg";
+
+    var fields = document.createElement("div");
+    fields.className = "fields";
+
+    var buttons = document.createElement("div");
+    buttons.className = "buttons";
+
+    var image = document.createElement("div");
+    image.className = "image";
+
+    alarmContainer.appendChild(fields);
+    alarmContainer.appendChild(buttons);
+    alarmContainer.appendChild(image);
+    fields.appendChild(name);
+    fields.appendChild(this._state);
+    fields.appendChild(this._sirenState);
+    fields.appendChild(textField);
+    buttons.appendChild(onBtn);
+    buttons.appendChild(offBtn);
+    buttons.appendChild(enterBtn);
+    buttons.appendChild(offSiren);
+    image.appendChild(imgAlarm);
 
     this._rootDom.appendChild(alarmContainer);
 

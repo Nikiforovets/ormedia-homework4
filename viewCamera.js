@@ -99,16 +99,35 @@ ViewCamera.prototype.render = function(){
         this.nightModeChange();
     });
 
-    camContainer.appendChild(name);
-    camContainer.appendChild(this._state);
-    camContainer.appendChild(this._liveRec);
-    camContainer.appendChild(this._nightMode);
-    camContainer.appendChild(onBtn);
-    camContainer.appendChild(offBtn);
-    camContainer.appendChild(onliveRecBtn);
-    camContainer.appendChild(offliveRecBtn)
-    camContainer.appendChild(onNightModeBtn);
-    camContainer.appendChild(offNightModeBtn);
+    var imgCamera = document.createElement("img");
+    imgCamera.className = "cam-img";
+    imgCamera.src = "camera.jpg";
+
+
+    var fields = document.createElement("div");
+    fields.className = "fields";
+
+    var buttons = document.createElement("div");
+    buttons.className = "buttons";
+
+    var image = document.createElement("div");
+    image.className = "image";
+
+
+    camContainer.appendChild(fields);
+    camContainer.appendChild(buttons);
+    camContainer.appendChild(image);
+    fields.appendChild(name);
+    fields.appendChild(this._state);
+    fields.appendChild(this._liveRec);
+    fields.appendChild(this._nightMode);
+    buttons.appendChild(onBtn);
+    buttons.appendChild(offBtn);
+    buttons.appendChild(onliveRecBtn);
+    buttons.appendChild(offliveRecBtn)
+    buttons.appendChild(onNightModeBtn);
+    buttons.appendChild(offNightModeBtn);
+    image.appendChild(imgCamera);
 
     this._rootDom.appendChild(camContainer);
 

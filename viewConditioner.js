@@ -66,16 +66,31 @@ ViewConditioner.prototype.render = function(){
         term.innerHTML = "Текущая температура " + this._conditioner._currentTemperature;
     });
 
-    
+    var imgCond = document.createElement("img");
+    imgCond.className = "cond-img";
+    imgCond.src = "condition.png";
 
-    condition.appendChild(name);
-    condition.appendChild(this._state);
-    condition.appendChild(term);
-    condition.appendChild(model);
-    condition.appendChild(onBtn);
-    condition.appendChild(offBtn);
-    condition.appendChild(plusTemp);
-    condition.appendChild(minusTemp);
+    var fields = document.createElement("div");
+    fields.className = "fields";
+
+    var buttons = document.createElement("div");
+    buttons.className = "buttons";
+
+    var image = document.createElement("div");
+    image.className = "image";
+
+    condition.appendChild(fields);
+    condition.appendChild(buttons);
+    condition.appendChild(image);
+    fields.appendChild(name);
+    fields.appendChild(this._state);
+    fields.appendChild(term);
+    fields.appendChild(model);
+    buttons.appendChild(onBtn);
+    buttons.appendChild(offBtn);
+    buttons.appendChild(plusTemp);
+    buttons.appendChild(minusTemp);
+    image.appendChild(imgCond);
 
     this._rootDom.appendChild(condition);
 
