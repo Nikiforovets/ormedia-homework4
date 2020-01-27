@@ -5,14 +5,22 @@ function ViewAlarm(alarm, rootDom){
     this._state = document.createElement("div");
     this._sirenState = document.createElement("div");
     this._sirenState.innerHTML = "Сирена выключена";
+
+    this._imgAlarm = document.createElement("img");
+    this._imgAlarm.className = "alarm-img hide";
+    this._imgAlarm.src = "alarm.jpg";
 }
 
 ViewAlarm.prototype.sirenStateChange = function(){
     if(this._alarm._sirenState == true){
         this._sirenState.innerHTML = "Включена сирена";
+        this._imgAlarm.classList.remove("hide");
+        this._sirenState.parentElement.parentElement.classList.add("red");
     }
     else{
         this._sirenState.innerHTML = "Сирена выключена";
+        this._imgAlarm.classList.add("hide");
+        this._sirenState.parentElement.parentElement.classList.remove("red");
     }
 }
 
@@ -43,10 +51,6 @@ ViewAlarm.prototype.render = function(){
         this.sirenStateChange();
     });
 
-    var imgAlarm = document.createElement("img");
-    imgAlarm.className = "alarm-img hide";
-    imgAlarm.src = "alarm.jpg";
-
     var fields = document.createElement("div");
     fields.className = "fields";
 
@@ -65,7 +69,7 @@ ViewAlarm.prototype.render = function(){
     fields.appendChild(textField);
     buttons.appendChild(enterBtn);
     buttons.appendChild(offSiren);
-    image.appendChild(imgAlarm);
+    image.appendChild(this._imgAlarm);
 
     this._rootDom.appendChild(alarmContainer);
 

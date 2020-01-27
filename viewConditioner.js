@@ -15,7 +15,27 @@ ViewConditioner.prototype.stateChange = function(){
     else{
         this._state.innerHTML = "Кондиционер выключен";
     }
-}
+};
+
+ViewConditioner.prototype.checkTemp = function(){
+    if(this._conditioner._currentTemperature < -1){
+        this._state.parentElement.parentElement.classList.remove("hot");
+        this._state.parentElement.parentElement.classList.remove("normal");
+        this._state.parentElement.parentElement.classList.add("cold");
+    }
+    else{
+        if(this._conditioner._currentTemperature > 8){
+            this._state.parentElement.parentElement.classList.remove("cold");
+            this._state.parentElement.parentElement.classList.remove("normal");
+            this._state.parentElement.parentElement.classList.add("hot");
+        }
+        else{
+            this._state.parentElement.parentElement.classList.remove("cold");
+            this._state.parentElement.parentElement.classList.remove("hot");
+            this._state.parentElement.parentElement.classList.add("normal");
+        }
+    }
+};
 
 ViewConditioner.prototype.render = function(){
     var condition = document.createElement("div");
@@ -54,6 +74,7 @@ ViewConditioner.prototype.render = function(){
     plusTemp.innerHTML = "Увеличить температуру";
     plusTemp.addEventListener("click", ()=>{
         this._conditioner.plusTemperature();
+        this.checkTemp();
         term.innerHTML = "Текущая температура " + this._conditioner._currentTemperature;
     });
 
@@ -63,6 +84,7 @@ ViewConditioner.prototype.render = function(){
     minusTemp.innerHTML = "Уменьшить температуру";
     minusTemp.addEventListener("click", ()=>{
         this._conditioner.minusTemperature();
+        this.checkTemp();
         term.innerHTML = "Текущая температура " + this._conditioner._currentTemperature;
     });
 

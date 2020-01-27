@@ -7,6 +7,7 @@ body{
     margin: 20px 10px;
     padding: 10px;
     display: flex;
+    max-width: 630px;
 }
 
 .cam-container{
@@ -14,6 +15,7 @@ body{
     margin: 20px 10px;
     padding: 10px;
     display: flex;
+    max-width: 630px;
 }
 
 .alarm-container{
@@ -21,6 +23,8 @@ body{
     margin: 20px 10px;
     padding: 10px;
     display: flex;
+    max-width: 630px;
+    height: 160px;
 }
 
 button{
@@ -43,9 +47,52 @@ button{
 
 .fields{
     margin: 20px;
+    width: 160px;
 }
 
 #root{
-    display: flex;
-    flex-wrap: wrap;
 }
+
+.alarm-img{
+    border-radius: 77px;
+}
+
+.hide{
+    display: none;
+}
+
+.red{
+    animation: siren 2s infinite;
+}
+
+@keyframes siren {
+    from {background-color: white;}
+    50% {background-color: #ED0618;}
+    to {background-color: white;}
+    }
+
+.hot{
+    animation: hot 2s;
+    background-color: orangered;
+
+}
+@keyframes hot {
+    from {background-color: white;}
+    to {background-color: orangered;}
+    }
+
+
+.cold{
+    background-color: aqua;
+    animation: cold 2s;
+}
+
+@keyframes cold {
+    from {background-color: white;}
+    to {background-color: aqua;}
+    }
+
+.normal{
+    background-color: white;
+}
+
