@@ -20,8 +20,21 @@ ViewCamera.prototype.stateChange = function(){
 
 ViewCamera.prototype.liveRecChange = function(){
     if(this._camera._state == true){
+        var redPoint = document.getElementById("redpoint");
+        if(redPoint)
+        redPoint.parentNode.removeChild(redPoint);
         if(this._camera._liveRecording == true){
             this._liveRec.innerHTML = "Прямая трансляция";
+            redPoint = document.createElement("div");
+            redPoint.id = "redpoint";
+            redPoint.style.backgroundColor = "red";
+            redPoint.style.width = "10px";
+            redPoint.style.height = "10px";
+            redPoint.style.borderRadius = "5px";
+            redPoint.style.position = "relative";
+            redPoint.style.top = "-95px";
+            redPoint.style.left = "70px";
+            this._liveRec.parentElement.parentElement.lastChild.appendChild(redPoint);
         }
         else{
             this._liveRec.innerHTML = "Воспроизведение записи";
@@ -36,9 +49,11 @@ ViewCamera.prototype.nightModeChange = function(){
     if(this._camera._state == true){
         if(this._camera._nightMode == true){
             this._nightMode.innerHTML = "Ночной режим включен";
+            this._nightMode.parentElement.parentElement.classList.add("dark");
         }
         else{
             this._nightMode.innerHTML = "Ночной режим выключен";
+            this._nightMode.parentElement.parentElement.classList.remove("dark");
         }
     }
     else this._nightMode.innerHTML = "-";
@@ -55,14 +70,23 @@ ViewCamera.prototype.render = function(){
     onBtn.className = "on";
     onBtn.innerHTML = "Включить камеру";
     onBtn.addEventListener("click", ()=>{
+        this._camera.offLiveRecording();
+        this._camera.offNightMode();
+        this.liveRecChange();
+        this.nightModeChange();
         this._camera.on();
         this.stateChange();
+        
     });
 
     var offBtn = document.createElement("button");
     offBtn.className = "off";
     offBtn.innerHTML = "Выключить камеру";
     offBtn.addEventListener("click", ()=>{
+        this._camera.offLiveRecording();
+        this._camera.offNightMode();
+        this.liveRecChange();
+        this.nightModeChange();
         this._camera.off();
         this.stateChange();
     });
